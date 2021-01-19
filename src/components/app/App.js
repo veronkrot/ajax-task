@@ -1,6 +1,6 @@
 import './App.css';
 import React from "react";
-import {PeopleComp} from "./Components/PeopleComp";
+import { PeopleComp } from "../peopleView/PeopleComp";
 
 const App = () => {
     return (
