@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {swService} from "../services/sw-service";
+import {swService} from "../../services/sw-service";
 
 export const PeopleComp = () => {
     const [person, setPerson] = useState({});
