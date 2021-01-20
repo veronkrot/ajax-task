@@ -66,6 +66,7 @@ export const PERSON_DATA_URL = 'https://swapi.dev/api/people/';
 export const PLANET_DATA_URL = 'https://swapi.dev/api/planets/';
 export const STARSHIP_DATA_URL = 'https://swapi.dev/api/starships/';
 export const BASE_IMAGES_URL = 'https://starwars-visualguide.com/assets/img/';
+export const NO_IMG_URL = `${BASE_IMAGES_URL}big-placeholder.jpg`;
 
 export const getFullImgUrl = (id, path) => {
     return `${BASE_IMAGES_URL + path}/${id}.jpg`;

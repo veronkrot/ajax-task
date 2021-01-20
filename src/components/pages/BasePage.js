@@ -1,5 +1,5 @@
 import React from 'react';
-import {BASE_IMAGES_URL} from "../../configs/pagesConfig";
+import {BASE_IMAGES_URL, NO_IMG_URL} from "../../configs/pagesConfig";
 import './styles.css'
 
 
@@ -7,7 +7,7 @@ class BasePage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {id: 1, data: {}};
-        this.btnHandlerClick = this.btnHandlerClick.bind(this);
+        this.loadNextObject = this.loadNextObject.bind(this);
     }
 
     loadData(id) {
@@ -16,6 +16,9 @@ class BasePage extends React.Component {
         }
         this.props.options.dataFunc(id).then(data => {
             this.setState({data: data});
+        }).catch((error) => {
+            console.error(`Error getting data for id ${this.state.id}. Trying next one...`, error);
+            this.loadNextObject();
         });
     }
 
@@ -23,14 +26,14 @@ class BasePage extends React.Component {
         this.loadData(this.state.id);
     }
 
-    btnHandlerClick() {
+    loadNextObject() {
         this.setState({id: this.state.id + 1}, () => {
             this.loadData(this.state.id);
         });
     }
 
     addDefaultSrc(e) {
-        e.target.src = `${BASE_IMAGES_URL}big-placeholder.jpg`;
+        e.target.src = NO_IMG_URL;
     }
 
     render() {
@@ -41,15 +44,10 @@ class BasePage extends React.Component {
                 return (<li key={field.key}>{field.text}: {this.state.data[field.key]}</li>);
             });
         }
-        if (this.state.data.errored) {
-            console.log('test');
-            // this.btnHandlerClick();
-            return (<br/>);
-        }
 
         return (
             <div className="Main">
-                <button className="Main-button" onClick={this.btnHandlerClick}>NEXT</button>
+                <button className="Main-button" onClick={this.loadNextObject}>NEXT</button>
                 <div className="Main-header">
                     <img src={img}
                          alt={name}

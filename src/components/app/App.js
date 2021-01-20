@@ -18,7 +18,7 @@ class App extends React.Component {
                 currentPage = <BasePage key={RESOURCE_TYPE.planets} options={planetProps}/>;
                 break;
             case RESOURCE_TYPE.starships:
-                currentPage = <BasePage key={RESOURCE_TYPE.starships} options={starshipProps}/>;;
+                currentPage = <BasePage key={RESOURCE_TYPE.starships} options={starshipProps}/>;
                 break;
             default:
                 currentPage = <BasePage key={RESOURCE_TYPE.characters} options={characterProps}/>;

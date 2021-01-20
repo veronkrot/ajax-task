@@ -13,9 +13,6 @@ const getData = (id, url, resource) => {
             let obj = res.data;
             obj.img = getFullImgUrl(id, resource);
             return obj;
-        }).catch((e) => {
-            e.errored = true;
-            return e;
         });
 }
 
